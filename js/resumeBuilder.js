@@ -11,8 +11,8 @@ var bio = {
   "welcomeMessage": "Hey there, my name is Stephen and I love lifting heavy weights and coding awesome websites",
   "skills" : [
     "javaScript", "HTML5", "CSS", "Design", "Typography"
-  ]
-};
+  ],
+}
 
 var education = {
   "schools" : [
@@ -47,7 +47,7 @@ var education = {
       "url" : "www.udacity.com"
     }
   ]
-};
+}
 
 var work = {
   "jobs" : [
@@ -73,7 +73,7 @@ var work = {
       "description" : "Provided a personalized guest experience to guests of the pub. Red Rock brews their own award winning beer! I was responsible to not only help customers pick the perfect beer for them but to also educate them on the different kind of beers we offered."
     }
   ]
-};
+}
 
 var projects = {
   "projects" : [
@@ -87,23 +87,13 @@ var projects = {
     }
 
   ] // end projects array
-};
+}
+
+var formattedHeaderName = HTMLheaderName.replace("%data%", bio.name);
+var formattedHeaderRole = HTMLheaderRole.replace("%data%", bio.role);
+
+$('#header').append(formattedHeaderName).append(formattedHeaderRole);
 
 if(bio.skills.length > 0) {
   $('#header').append(HTMLskillsStart);
-
-  var skills = bio.skills.join(" ");
-  alert(skills);
-  var formattedSkills = HTMLskills.replace("%data%", formattedSkills);
-  $('#skills').append(formattedSkills);
-}
-
-for(jobs in work.jobs) {
-  $('#workExperience').append(HTMLworkStart);
-
-  var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[jobs].employer);
-  var formattedTitle = HTMLworkTitle.replace('%data%', work.jobs[jobs].title);
-  var formattedEmployerTitle = formattedEmployer + formattedTitle;
-
-  $('.work-entry:last').append(formattedEmployerTitle);
 }
