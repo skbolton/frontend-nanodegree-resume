@@ -19,7 +19,7 @@ var education = {
     {
       "name" : "Alta High School",
       "location" : "Sandy, UT",
-      "degree" : "General Education"
+      "degree" : "General Education",
       "majors" : ["General Education"],
       "dates" : 2007,
       "url" : "http://ahs.canyonsdistrict.org/"
@@ -27,7 +27,7 @@ var education = {
     {
       "name" : "Salt Lake Community College",
       "location" : "Taylorsville, UT",
-      "degree" : "CS (never completed)"
+      "degree" : "CS (never completed)",
       "majors" : ["Computer Science"],
       "dates" : 2011,
       "url" : "http://www.slcc.edu"
@@ -78,9 +78,9 @@ var work = {
 var projects = {
   "projects" : [
     {
-      "title" :
-      "dates" :
-      "description" :
+      "title" : "",
+      "dates" : "",
+      "description" : "",
       "images" : [
 
       ] // end images property of project object
@@ -88,12 +88,42 @@ var projects = {
 
   ] // end projects array
 }
-
+// Write heading title and role
 var formattedHeaderName = HTMLheaderName.replace("%data%", bio.name);
 var formattedHeaderRole = HTMLheaderRole.replace("%data%", bio.role);
+$('#header').prepend(formattedHeaderRole);
+$('#header').prepend(formattedHeaderName);
 
-$('#header').append(formattedHeaderName).append(formattedHeaderRole);
-
+// add skills heading and skills
 if(bio.skills.length > 0) {
+  //append the Skills heading
   $('#header').append(HTMLskillsStart);
+  //loop through skills array and add skills to list
+  for(var i = 0; i < bio.skills.length; i++) {
+    var formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
+    $('#skills').append(formattedSkill);
+  }
 }
+function displayWork() {
+  for(job in work.jobs) {
+  // create div .work-entry to place work experience
+    $('#workExperience').append(HTMLworkStart);
+  // format name and title into one line
+    var WorkEmp = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+    var WorkTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+    var formattedEmployerTitle = WorkEmp + WorkTitle;
+  // format both dates and description
+    var formattedDate = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+    var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+  // append the title, dates, and description to created
+  // div .work-entry
+    $('.work-entry:last').prepend(formattedDescription);
+    $('.work-entry:last').prepend(formattedDate);
+    $('.work-entry:last').prepend(formattedEmployerTitle);
+  }
+}
+displayWork();
+
+$(document).click(function(loc) {
+  logClicks(loc.pageX, loc.pageY);
+});
