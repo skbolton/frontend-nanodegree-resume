@@ -8,7 +8,7 @@ var bio = {
     "location" : "Salt Lake City, UT"
   },
   "pictureURL" : "images/Stephen.jpg",
-  "welcomeMessage": "Hey there, my name is Stephen and I love lifting heavy weights and coding awesome websites",
+  "welcomeMessage": "Hey there! My name is Stephen and I am a Developer/Designer from Salt Lake City, UT. If I am not coding I am either at the gym, playing my guitar, gaming on my Xbox, or getting nerdy with my desk attempting to make it even more awesome! I like my coffee on ice. Shaken not stirred...",
   "skills" : [
     "javaScript", "HTML5", "CSS", "Design", "Typography"
   ],
@@ -56,7 +56,7 @@ var work = {
       "title" : "Assistant Manager",
       "location" : "Salt Lake City, UT",
       "dates" : "6/2014 - 9/2015",
-      "description" : "As an assistant manager I was responsible with many different tasks, starting with setting up the floor for a shift. This involved assigning servers into sections to set them up for success, and ensuring that all large parties were coordinated. Being near the Salt Palace Convention Center, Caffe Molise is a primary stop for food. This can cause a high influx of traffic making organization and teamwork paramount. I also assisted parties in reserving our private rooms. For banquets we would create custom menus, gather any audio/video supplies and plan out any additional setup all while working within their budget. Behind the scenes, I was responsible for interviews, training new hires, staff disciplinary actions, managing inventory, and company payroll."
+      "description" : "As an assistant manager I was assigned with many different tasks, starting with getting the floor ready for a shift. This involved assigning servers into sections to set them up for success, and ensuring that all large parties were coordinated. Being near the Salt Palace Convention Center, Caffe Molise is a primary stop for food. This can cause a high influx of traffic making organization and teamwork paramount. I also assisted parties in reserving our private rooms. For banquets we would create custom menus, gather any audio/video supplies and plan out any additional setup all while working within their budget. Behind the scenes, I was responsible for interviews, training new hires, staff disciplinary actions, managing inventory, and company payroll."
     },
     {
       "employer" : "Corner Bakery",
@@ -78,33 +78,65 @@ var work = {
 var projects = {
   "projects" : [
     {
-      "title" : "",
-      "dates" : "",
-      "description" : "",
+      "title" : "The Thrilla in Manila",
+      "dates" : "2015",
+      "description" : "This was a short project mostly because I am a badass and this was so beneath me. The only thing learned from this project is that I love bacon more than I thought. Crazy I know but I really really love bacon",
       "images" : [
-
+        "images/Stephen.jpg"
+      ] // end images property of project object
+    },
+    {
+      "title" : "The Thrilla in Manila",
+      "dates" : "2015",
+      "description" : "This was a short project mostly because I am a badass and this was so beneath me. The only thing learned from this project is that I love bacon more than I thought. Crazy I know but I really really love bacon",
+      "images" : [
+        "images/Stephen.jpg",
+        "images/Stephen.jpg"
       ] // end images property of project object
     }
-
   ] // end projects array
 }
-// Write heading title and role
-var formattedHeaderName = HTMLheaderName.replace("%data%", bio.name);
-var formattedHeaderRole = HTMLheaderRole.replace("%data%", bio.role);
-$('#header').prepend(formattedHeaderRole);
-$('#header').prepend(formattedHeaderName);
+bio.displayBio = function() {
+  // Write heading title and role
+  var formattedHeaderName = HTMLheaderName.replace("%data%", bio.name);
+  var formattedHeaderRole = HTMLheaderRole.replace("%data%", bio.role);
+  $('#header').prepend(formattedHeaderRole);
+  $('#header').prepend(formattedHeaderName);
 
-// add skills heading and skills
-if(bio.skills.length > 0) {
-  //append the Skills heading
-  $('#header').append(HTMLskillsStart);
-  //loop through skills array and add skills to list
-  for(var i = 0; i < bio.skills.length; i++) {
-    var formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
-    $('#skills').append(formattedSkill);
+  var formattedString;
+   formattedString = HTMLmobile.replace("%data%", bio.contacts.mobile);
+   $('#topContacts').append(formattedString);
+
+   formattedString = HTMLemail.replace("%data%", bio.contacts.email);
+   $('#topContacts').append(formattedString);
+
+   formattedString = HTMLgithub.replace("%data%", bio.contacts.github);
+   $('#topContacts').append(formattedString);
+
+   formattedString = HTMLlocation.replace("%data%", bio.contacts.location);
+   $('#topContacts').append(formattedString);
+
+  formattedString = HTMLbioPic.replace("%data%", bio.pictureURL);
+  $('#header').append(formattedString);
+
+
+  formattedString = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+  $('#header').append(formattedString);
+
+  // add skills heading and skills
+  if(bio.skills.length > 0) {
+    //append the Skills heading
+    $('#header').append(HTMLskillsStart);
+    //loop through skills array and add skills to list
+    for(var i = 0; i < bio.skills.length; i++) {
+      var formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
+      $('#skills').append(formattedSkill);
+    }
   }
-}
-function displayWork() {
+};
+bio.displayBio();
+
+work.displayWork = function() {
   for(job in work.jobs) {
   // create div .work-entry to place work experience
     $('#workExperience').append(HTMLworkStart);
@@ -121,9 +153,39 @@ function displayWork() {
     $('.work-entry:last').prepend(formattedDate);
     $('.work-entry:last').prepend(formattedEmployerTitle);
   }
-}
-displayWork();
+};
+work.displayWork();
 
-$(document).click(function(loc) {
-  logClicks(loc.pageX, loc.pageY);
-});
+projects.display = function() {
+  if(projects.projects.length > 0) {
+    var formattedProjectTitle,
+        formattedProjectDates,
+        formattedProjectDescription,
+        formattedProjectImage;
+    for(proj in projects.projects){
+      // loop through projects object. Each time
+      // adding a new div to put info into
+      $('#projects').append(HTMLprojectStart);
+      formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[proj].title);
+      $('.project-entry:last').append(formattedProjectTitle);
+
+
+      formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[proj].dates);
+      $('.project-entry:last').append(formattedProjectDates);
+
+      formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[proj].description);
+      $('.project-entry:last').append(formattedProjectDescription);
+
+      // since images property of object is an array
+      // we need to loop through it.
+      for(var i = 0; i < projects.projects[proj].images.length; i++){
+        formattedProjectImage = HTMLprojectImage.replace("%data%", projects.projects[proj].images[i]);
+        $('.project-entry:last').append(formattedProjectImage);
+      }
+
+    }
+  }
+}
+projects.display();
+
+$('#mapDiv').append(googleMap);

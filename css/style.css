@@ -82,7 +82,8 @@ p {
   color: #333;
 }
 
-a {
+#workExperience a,
+#projects a {
   color: #1199c3;
   text-decoration: none;
   margin-top: 10px;
@@ -131,6 +132,10 @@ a {
 #header {
   background-color: #484848;
 }
+#topContacts a {
+  text-decoration: none;
+  color: #16a085;
+}
 
 .flex-box {
   display: -webkit-flex;
@@ -139,6 +144,12 @@ a {
   flex-wrap: wrap;
   justify-content: space-around;
   padding: 10px;
+}
+
+.flex-box-col {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .center-content {
