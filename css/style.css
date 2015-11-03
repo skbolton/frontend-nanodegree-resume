@@ -1,8 +1,9 @@
 body, div, ul, li, p, h1, h2, h3, h4, h5, h6 {
   padding: 0;
   margin: 0;
-  font-family: "Roboto", sans-serif;
-  line-height: 1.6;
+  font-family: "Oxygen", sans-serif;
+  line-height: 1.5;
+  font-size: 20px;
 }
 
 html {
@@ -23,6 +24,7 @@ html {
   box-sizing: border-box;
   max-width: 930px;
   margin: 0 auto;
+  line-height: 1.8;
 }
 .work-entry:last-of-type {
   margin-bottom: 10px;
@@ -67,6 +69,7 @@ h2, h3, h4, h5 {
   color: #999;
   line-height: 16px;
   float: left;
+  margin-right: 10px;
 }
 
 .location-text {
