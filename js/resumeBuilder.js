@@ -15,28 +15,31 @@ var bio = {
 }
 
 bio.displayBio = function() {
-  // Write heading title and role
-  var formattedHeaderName = HTMLheaderName.replace("%data%", bio.name);
-  var formattedHeaderRole = HTMLheaderRole.replace("%data%", bio.role);
-  $('#header').prepend(formattedHeaderRole);
-  $('#header').prepend(formattedHeaderName);
+  // Use formatted string to complete template and add to DOM
+  var formattedString = HTMLheaderName.replace("%data%", bio.name);
+  $('#header').append(formattedString);
 
-  var formattedString;
-   formattedString = HTMLmobile.replace("%data%", bio.contacts.mobile);
-   $('#topContacts').append(formattedString);
+  formattedString = HTMLheaderRole.replace("%data%", bio.role);
+  $('#header').append(formattedString);
 
-   formattedString = HTMLemail.replace("%data%", bio.contacts.email);
-   $('#topContacts').append(formattedString);
+  formattedString = HTMLmobile.replace("%data%", bio.contacts.mobile);
+  $('#topContacts').append(formattedString);
+  $('#footerContacts').append(formattedString);
 
-   formattedString = HTMLgithub.replace("%data%", bio.contacts.github);
-   $('#topContacts').append(formattedString);
+  formattedString = HTMLemail.replace("%data%", bio.contacts.email);
+  $('#topContacts').append(formattedString);
+  $('#footerContacts').append(formattedString);
 
-   formattedString = HTMLlocation.replace("%data%", bio.contacts.location);
-   $('#topContacts').append(formattedString);
+  formattedString = HTMLgithub.replace("%data%", bio.contacts.github);
+  $('#topContacts').append(formattedString);
+  $('#footerContacts').append(formattedString);
+
+  formattedString = HTMLlocation.replace("%data%", bio.contacts.location);
+  $('#topContacts').append(formattedString);
+  $('#footerContacts').append(formattedString);
 
   formattedString = HTMLbioPic.replace("%data%", bio.pictureURL);
   $('#header').append(formattedString);
-
 
   formattedString = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
   $('#header').append(formattedString);
@@ -47,8 +50,8 @@ bio.displayBio = function() {
     $('#header').append(HTMLskillsStart);
     //loop through skills array and add skills to list
     for(var i = 0; i < bio.skills.length; i++) {
-      var formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
-      $('#skills').append(formattedSkill);
+      formattedString = HTMLskills.replace("%data%", bio.skills[i]);
+      $('#skills').append(formattedString);
     }
   }
 };
@@ -73,42 +76,69 @@ var education = {
       "url" : "http://www.slcc.edu"
     }
   ],
-  "OnlineCourses" : [
+  "onlineCourses" : [
     {
       "title" : "Front End Developer",
       "school" : "Team Treehouse",
       "dates" : 2015,
-      "url" : "www.teamtreehouse.com"
+      "url" : "http://www.teamtreehouse.com"
     },
     {
       "title" : "Front End Developer Nanodegree",
       "school" : "Udacity",
       "dates" : 2015,
-      "url" : "www.udacity.com"
+      "url" : "http://www.udacity.com"
     }
   ]
 }
 
 education.displayEducation = function() {
   if(education.schools.length > 0) {
-    // caching current iteration object in variable
+    // creating a cache for object in iteration
     var currentObject;
     for(schools in education.schools) {
-      // Create div to place schools into
+      // Create div to hold school information
       $('#education').append(HTMLschoolStart);
+      // here is cache for object iteration
       currentObject = education.schools[schools];
       var formattedString = HTMLschoolName.replace("%data%", currentObject.name);
-      $('.education-entry:last').append(formattedString);
+      formattedString = formattedString.replace('#',currentObject.url);
+      var $educationLast = $('.education-entry:last');
+      $educationLast.append(formattedString);
 
       formattedString = HTMLschoolDegree.replace('%data%', currentObject.degree);
-      $('.education-entry:last').append(formattedString);
-      formattedString = HTMLschoolDates.replace('%data%', currentObject.dates);
-      $('.education-entry:last').append(formattedString);
-      formattedString = HTMLschoolLocation.replace('%data%', currentObject.location);
-      $('.education-entry').append(formattedString);
-      formattedString = HTMLschoolMajor.replace('%data%', currentObject.majors);
-      $('.education-entry').append(formattedString);
+      $educationLast.append(formattedString);
 
+      formattedString = HTMLschoolDates.replace('%data%', currentObject.dates);
+      $educationLast.append(formattedString);
+
+      formattedString = HTMLschoolLocation.replace('%data%', currentObject.location);
+      $educationLast.append(formattedString);
+
+      formattedString = HTMLschoolMajor.replace('%data%', currentObject.majors);
+      $educationLast.append(formattedString);
+    } // end object iteration
+  }
+  if(education.onlineCourses.length > 0) {
+    $('#education').append(HTMLonlineClasses);
+    var currentObject;
+    for(school in education.onlineCourses) {
+      // caching object in iteration
+      currentObject = education.onlineCourses[school];
+      $('#education').append(HTMLschoolStart);
+      $education = $('.education-entry:last');
+      var formattedString = HTMLonlineTitle.replace('%data%', currentObject.title);
+      $education.append(formattedString);
+
+      formattedString = HTMLonlineSchool.replace('%data%', currentObject.school);
+      $education.append(formattedString);
+
+      formattedString = HTMLonlineDates.replace('%data%', currentObject.dates);
+      $education.append(formattedString);
+
+      formattedString = HTMLonlineURL.replace('%data%', currentObject.url);
+      formattedString = formattedString.replace('#', currentObject.url);
+      $education.append(formattedString);
     }
   }
 };

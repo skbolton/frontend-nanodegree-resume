@@ -1,29 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!-- This tells the browser how to read the document. -->
   <meta charset="utf-8">
-  <title>Resume</title>
+  <title>Stephen Bolton's Resume</title>
   <link href="https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css">
   <link href="css/style.css" rel="stylesheet">
   <script src="js/jQuery.js"></script>
-
-  <!-- More on helper.js in the class -->
+  <!-- Template -->
   <script src="js/helper.js"></script>
-
-  <!--
-  Uncomment the <script> tag below when you're ready to add an interactive
-  Google Map to your resume!
-  -->
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
-
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
   <meta name="viewport" content="width=device-width">
 </head>
 <body>
   <div id="main">
-
     <div id="header" class="center-content clear-fix">
-      <ul id="topContacts" class = "flex-box"></ul>
+      <ul id="topContacts" class="flex-box"></ul>
     </div>
     <div style="clear: both;"></div>
     <div id="workExperience" class="gray">
@@ -45,22 +36,9 @@
     </div>
   </div>
 
-  <!--
-  The next line tells the browser where to download the JavaScript file you'll be
-  writing. In resumeBuilder.js, you'll be writing code that builds the resume
-  dynamically when this website, index.html, is opened.
-  -->
+  <!-- resume builder -->
   <script src="js/resumeBuilder.js"></script>
-
-
-  <!--
-  These scripts are written in JavaScript. You'll be breaking them down as part of
-  a quiz. Essentially, the next few lines are checking to see if you have not
-  changed each section of the resume. If you have not made any changes to a section
-  of the resume, then that part of the resume does not show up. More on this in the
-  course.
-  -->
-
+  <!--if fields are not populated by JSON then hide them-->
   <script type="text/javascript">
 
     if(document.getElementsByClassName('flex-item').length === 0) {
