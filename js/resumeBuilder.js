@@ -14,88 +14,6 @@ var bio = {
   ],
 }
 
-var education = {
-  "schools" : [
-    {
-      "name" : "Alta High School",
-      "location" : "Sandy, UT",
-      "degree" : "General Education",
-      "majors" : ["General Education"],
-      "dates" : 2007,
-      "url" : "http://ahs.canyonsdistrict.org/"
-    },
-    {
-      "name" : "Salt Lake Community College",
-      "location" : "Taylorsville, UT",
-      "degree" : "CS (never completed)",
-      "majors" : ["Computer Science"],
-      "dates" : 2011,
-      "url" : "http://www.slcc.edu"
-    }
-  ],
-  "OnlineCourses" : [
-    {
-      "title" : "Front End Developer",
-      "school" : "Team Treehouse",
-      "dates" : 2015,
-      "url" : "www.teamtreehouse.com"
-    },
-    {
-      "title" : "Front End Developer Nanodegree",
-      "school" : "Udacity",
-      "dates" : 2015,
-      "url" : "www.udacity.com"
-    }
-  ]
-}
-
-var work = {
-  "jobs" : [
-    {
-      "employer" : "Caffe Molise",
-      "title" : "Assistant Manager",
-      "location" : "Salt Lake City, UT",
-      "dates" : "6/2014 - 9/2015",
-      "description" : "As an assistant manager I was assigned with many different tasks, starting with getting the floor ready for a shift. This involved assigning servers into sections to set them up for success, and ensuring that all large parties were coordinated. Being near the Salt Palace Convention Center, Caffe Molise is a primary stop for food. This can cause a high influx of traffic making organization and teamwork paramount. I also assisted parties in reserving our private rooms. For banquets we would create custom menus, gather any audio/video supplies and plan out any additional setup all while working within their budget. Behind the scenes, I was responsible for interviews, training new hires, staff disciplinary actions, managing inventory, and company payroll."
-    },
-    {
-      "employer" : "Corner Bakery",
-      "title" : "Catering Manager",
-      "location" : "Sandy, UT",
-      "dates" : "12/2013 - 6/2014",
-      "description" : "Oversaw catering department at busiest Corner Bakery location. Central to my job was time management, delegation, and communication. I was responsible for the whole process from order taking, helping my team prepare food, to making sure it was delivered on time. Often, orders would come in last minute and require me to fit them in among the other orders. Planning delivery was often challenging since times ranged from business to business due to our large delivery area. Other management duties included: tracking inventory, helping out in the dining room of the restaurant, and splitting up tips for catering staff. I also took it upon myself to help market the catering department. I would do this by going to surrounding business every day and dropping off Corner Bakery treats to win over business. I also helped maintain relationships with current customers by often dropping off extra little treats for them, and calling them after every order to make sure we provided the best service possible."
-    },
-    {
-      "employer" : "Red Rock Brewing Company",
-      "title" : "Server",
-      "location" : "Salt Lake City, UT",
-      "dates" : "03/2013 - 04/2014",
-      "description" : "Provided a memorable and personalized guest experience. Red Rock brews their own award winning beer! A fun part of my job was not only picking the perfect beer for someone, but also educating them on different kinds of beer and brewing processes. I was a team lead server making me a first choice for larger parties or harder sections of the restaurant. I also managed the facebook page for the company. Using strategic posts I helped drive customer interest in new beers and food. This facilitated new customers and returning customers for Red Rock."
-    }
-  ]
-}
-
-var projects = {
-  "projects" : [
-    {
-      "title" : "The Thrilla in Manila",
-      "dates" : "2015",
-      "description" : "This was a short project mostly because I am a badass and this was so beneath me. The only thing learned from this project is that I love bacon more than I thought. Crazy I know but I really really love bacon",
-      "images" : [
-        "images/Stephen.jpg"
-      ] // end images property of project object
-    },
-    {
-      "title" : "The Thrilla in Manila",
-      "dates" : "2015",
-      "description" : "This was a short project mostly because I am a badass and this was so beneath me. The only thing learned from this project is that I love bacon more than I thought. Crazy I know but I really really love bacon",
-      "images" : [
-        "images/Stephen.jpg",
-        "images/Stephen.jpg"
-      ] // end images property of project object
-    }
-  ] // end projects array
-}
 bio.displayBio = function() {
   // Write heading title and role
   var formattedHeaderName = HTMLheaderName.replace("%data%", bio.name);
@@ -136,6 +54,94 @@ bio.displayBio = function() {
 };
 bio.displayBio();
 
+var education = {
+  "schools" : [
+    {
+      "name" : "Alta High School",
+      "location" : "Sandy, UT",
+      "degree" : "General Education",
+      "majors" : ["General Education"],
+      "dates" : 2007,
+      "url" : "http://ahs.canyonsdistrict.org/"
+    },
+    {
+      "name" : "Salt Lake Community College",
+      "location" : "Taylorsville, UT",
+      "degree" : "CS (never completed)",
+      "majors" : ["Computer Science"],
+      "dates" : 2011,
+      "url" : "http://www.slcc.edu"
+    }
+  ],
+  "OnlineCourses" : [
+    {
+      "title" : "Front End Developer",
+      "school" : "Team Treehouse",
+      "dates" : 2015,
+      "url" : "www.teamtreehouse.com"
+    },
+    {
+      "title" : "Front End Developer Nanodegree",
+      "school" : "Udacity",
+      "dates" : 2015,
+      "url" : "www.udacity.com"
+    }
+  ]
+}
+
+education.displayEducation = function() {
+  if(education.schools.length > 0) {
+    // caching current iteration object in variable
+    var currentObject;
+    for(schools in education.schools) {
+      // Create div to place schools into
+      $('#education').append(HTMLschoolStart);
+      currentObject = education.schools[schools];
+      var formattedString = HTMLschoolName.replace("%data%", currentObject.name);
+      $('.education-entry:last').append(formattedString);
+
+      formattedString = HTMLschoolDegree.replace('%data%', currentObject.degree);
+      $('.education-entry:last').append(formattedString);
+      formattedString = HTMLschoolDates.replace('%data%', currentObject.dates);
+      $('.education-entry:last').append(formattedString);
+      formattedString = HTMLschoolLocation.replace('%data%', currentObject.location);
+      $('.education-entry').append(formattedString);
+      formattedString = HTMLschoolMajor.replace('%data%', currentObject.majors);
+      $('.education-entry').append(formattedString);
+
+    }
+  }
+};
+
+education.displayEducation();
+
+
+var work = {
+  "jobs" : [
+    {
+      "employer" : "Caffe Molise",
+      "title" : "Assistant Manager",
+      "location" : "Salt Lake City, UT",
+      "dates" : "6/2014 - 9/2015",
+      "description" : "As an assistant manager I was assigned with many different tasks, starting with getting the floor ready for a shift. This involved assigning servers into sections to set them up for success, and ensuring that all large parties were coordinated. Being near the Salt Palace Convention Center, Caffe Molise is a primary stop for food. This can cause a high influx of traffic making organization and teamwork paramount. I also assisted parties in reserving our private rooms. For banquets we would create custom menus, gather any audio/video supplies and plan out any additional setup all while working within their budget. Behind the scenes, I was responsible for interviews, training new hires, staff disciplinary actions, managing inventory, and company payroll."
+    },
+    {
+      "employer" : "Corner Bakery",
+      "title" : "Catering Manager",
+      "location" : "Sandy, UT",
+      "dates" : "12/2013 - 6/2014",
+      "description" : "Oversaw catering department at busiest Corner Bakery location. Central to my job was time management, delegation, and communication. I was responsible for the whole process from order taking, helping my team prepare food, to making sure it was delivered on time. Often, orders would come in last minute and require me to fit them in among the other orders. Planning delivery was often challenging since times ranged from business to business due to our large delivery area. Other management duties included: tracking inventory, helping out in the dining room of the restaurant, and splitting up tips for catering staff. I also took it upon myself to help market the catering department. I would do this by going to surrounding business every day and dropping off Corner Bakery treats to win over business. I also helped maintain relationships with current customers by often dropping off extra little treats for them, and calling them after every order to make sure we provided the best service possible."
+    },
+    {
+      "employer" : "Red Rock Brewing Company",
+      "title" : "Server",
+      "location" : "Salt Lake City, UT",
+      "dates" : "03/2013 - 04/2014",
+      "description" : "Provided a memorable and personalized guest experience. Red Rock brews their own award winning beer! A fun part of my job was not only picking the perfect beer for someone, but also educating them on different kinds of beer and brewing processes. I was a team lead server making me a first choice for larger parties or harder sections of the restaurant. I also managed the facebook page for the company. Using strategic posts I helped drive customer interest in new beers and food. This facilitated new customers and returning customers for Red Rock."
+    }
+  ]
+}
+
 work.displayWork = function() {
   for(job in work.jobs) {
   // create div .work-entry to place work experience
@@ -155,6 +161,28 @@ work.displayWork = function() {
   }
 };
 work.displayWork();
+
+var projects = {
+  "projects" : [
+    {
+      "title" : "The Thrilla in Manila",
+      "dates" : "2015",
+      "description" : "This was a short project mostly because I am a badass and this was so beneath me. The only thing learned from this project is that I love bacon more than I thought. Crazy I know but I really really love bacon",
+      "images" : [
+        "images/Stephen.jpg"
+      ] // end images property of project object
+    },
+    {
+      "title" : "The Thrilla in Manila",
+      "dates" : "2015",
+      "description" : "This was a short project mostly because I am a badass and this was so beneath me. The only thing learned from this project is that I love bacon more than I thought. Crazy I know but I really really love bacon",
+      "images" : [
+        "images/Stephen.jpg",
+        "images/Stephen.jpg"
+      ] // end images property of project object
+    }
+  ] // end projects array
+}
 
 projects.display = function() {
   if(projects.projects.length > 0) {
@@ -188,4 +216,7 @@ projects.display = function() {
 }
 projects.display();
 
+
+
+// google map integration
 $('#mapDiv').append(googleMap);
