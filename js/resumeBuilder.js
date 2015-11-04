@@ -10,12 +10,13 @@ var bio = {
   "pictureURL" : "images/Stephen.jpg",
   "welcomeMessage": "Hey there! My name is Stephen and I am a Developer/Designer from Salt Lake City, UT. If I am not coding I am either at the gym, playing my guitar, gaming on my Xbox, or getting nerdy with my desk attempting to make it even more awesome! I like my coffee on ice. Shaken not stirred...",
   "skills" : [
-    "javaScript", "HTML5", "CSS", "Design", "Typography"
+    "JavaScript", "HTML5", "CSS", "Design", "Teamwork"
   ],
 }
 
 bio.displayBio = function() {
   // Use formatted string to complete template and add to DOM
+
   var formattedString = HTMLheaderName.replace("%data%", bio.name);
   $('#header').append(formattedString);
 
@@ -54,6 +55,12 @@ bio.displayBio = function() {
       $('#skills').append(formattedString);
     }
   }
+  // add icons to skill list... This is kinda hacked I know
+  $('#skills .flex-item:first').attr('class', 'flex-item flaticon-development');
+  $('#skills .flex-item:nth-child(2)').attr('class', 'flex-item flaticon-internet116');
+  $('#skills .flex-item:nth-child(3)').attr('class', 'flex-item flaticon-css3');
+  $('#skills .flex-item:nth-child(4)').attr('class', 'flex-item flaticon-website8');
+  $('#skills .flex-item:last').attr('class', 'flex-item flaticon-team2');
 };
 bio.displayBio();
 
@@ -245,8 +252,6 @@ projects.display = function() {
   }
 }
 projects.display();
-
-
 
 // google map integration
 $('#mapDiv').append(googleMap);

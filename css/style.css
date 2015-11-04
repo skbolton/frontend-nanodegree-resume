@@ -1,3 +1,68 @@
+/*
+** Icon fonts uploading
+*/
+
+@font-face {
+	font-family: "Flaticon";
+	src: url("../fonts/flaticon.eot");
+	src: url("../fonts/flaticon.eot#iefix") format("embedded-opentype"),
+	url("../fonts/flaticon.woff") format("woff"),
+	url("../fonts/flaticon.ttf") format("truetype"),
+	url("../fonts/flaticon.svg") format("svg");
+	font-weight: normal;
+	font-style: normal;
+
+}
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {
+	font-family: Flaticon;
+  font-size: 20px;
+  font-style: normal;
+  margin-right: 5px;
+  color: white;
+}
+.flaticon-css3:before {
+	content: "\e000";
+  color: #f1c40f;
+  font-size:28px;
+}
+.flaticon-development:before {
+	content: "\e001";
+  color: #f1c40f;
+  font-size:28px;
+}
+.flaticon-github10:before {
+	content: "\e002";
+}
+.flaticon-internet116:before {
+	content: "\e003";
+  color: #f1c40f;
+  font-size:28px;
+}
+.flaticon-mail3:before {
+	content: "\e004";
+}
+.flaticon-pin56:before {
+	content: "\e005";
+}
+.flaticon-team2:before {
+	content: "\e006";
+  color: #f1c40f;
+  font-size:28px;
+}
+.flaticon-telephone46:before {
+	content: "\e007";
+}
+.flaticon-website8:before {
+	content: "\e008";
+  color: #f1c40f;
+  font-size:28px;
+}
+
+/*
+**** general styling
+*/
+
 body, div, ul, li, p, h1, h2, h3, h4, h5, h6 {
   padding: 0;
   margin: 0;
@@ -9,41 +74,6 @@ body, div, ul, li, p, h1, h2, h3, h4, h5, h6 {
 html {
   /*background-color: #ecf0f1;*/
 }
-
-#main {
-  max-width: 1160px;
-  margin: 0 auto;
-}
-
-#header {
-  background-color: #484848;
-  background-image: url('../images/bgheader.png');
-  background-size: cover;
-  background-position: bottom;
-  padding-bottom: 50px;
-
-
-}
-
-#workExperience {
-  padding-top: 20px;
-}
-
-.clear-fix {
-  overflow: auto;
-}
-
-.education-entry, .work-entry, .project-entry {
-  padding: 0 5%;
-  box-sizing: border-box;
-  max-width: 930px;
-  margin: 0 auto 10px 0;
-  line-height: 1.8;
-}
-.work-entry:last-of-type {
-  margin-bottom: 10px;
-}
-
 h1 {
   font-size: 40px;
   color: #16a085;
@@ -76,55 +106,35 @@ h4 {
 h2, h3, h4, h5 {
   padding: 10px 5%;
 }
-.center-text {
-  text-align: center;
-}
-
-.date-text {
-  font-style: italic;
-  font-size: 14px;
-  color: #999;
-  line-height: 16px;
-  float: left;
-  margin-right: 10px;
-}
-
-.location-text {
-  font-style: italic;
-  font-size: 14px;
-  color: #999;
-  line-height: 16px;
-  float: right;
-}
 
 p {
   font-size: 16px;
   color: #333;
 }
 
-#workExperience a,
-#projects a,
-#education a {
-  color: #1199c3;
-  text-decoration: none;
-  display: block;
-  font-size: 1.1em;
-}
-#education a {
-  /*overriding display block from above rule*/
-  display: inline;
+ul {
+  list-style-type: none;
 }
 
-.welcome-message {
-  font-style: italic;
-  font-size: 18px;
-  color: #f3f3f3;
-  line-height: 28px;
+img {
+  margin:15px;
 }
 
-#skills-h3 {
-  color: #16a085;
-  display: none;
+span {
+  padding: 5px;
+  color: white;
+}
+
+.clear-fix {
+  overflow: auto;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.center-content {
+  padding: 2.5% 5%;
 }
 
 .green {
@@ -150,16 +160,6 @@ p {
   background-color: #4a4a4a;
 }
 
-
-/* TODO: Replace with image later */
-
-
-#topContacts a,
-#footerContacts a {
-  text-decoration: none;
-  color: #16a085;
-}
-
 .flex-box {
   display: -webkit-flex;
   display: flex;
@@ -169,12 +169,23 @@ p {
   padding: 10px;
 }
 
-.center-content {
-  padding: 2.5% 5%;
+#main {
+  max-width: 1160px;
+  margin: 0 auto;
 }
 
-ul {
-  list-style-type: none;
+#header {
+  background-color: #484848;
+  background-image: url('../images/bgheader.png');
+  background-size: cover;
+  background-position: bottom;
+  padding-bottom: 30px;
+}
+
+#topContacts a,
+#footerContacts a {
+  text-decoration: none;
+  color: #16a085;
 }
 
 .biopic {
@@ -186,22 +197,95 @@ ul {
   margin-right: 20px;
 }
 
+.welcome-message {
+  font-style: italic;
+  font-size: 18px;
+  font-weight: 300;
+  color: #f3f3f3;
+  line-height: 1.6;
+}
 
-span {
-  padding: 5px;
-  color: white;
+#skills-h3 {
+  color: #16a085;
+  display: none;
+}
+
+#workExperience {
+  padding-top: 20px;
+}
+
+.education-entry, .work-entry, .project-entry {
+  padding: 0 5%;
+  box-sizing: border-box;
+  max-width: 930px;
+  margin: 0 auto 10px 0;
+  line-height: 1.8;
+}
+.work-entry:last-of-type {
+  margin-bottom: 10px;
+}
+
+.date-text {
+  font-style: italic;
+  font-size: 14px;
+  color: #999;
+  line-height: 16px;
+  float: left;
+  margin-right: 10px;
+}
+
+.location-text {
+  font-style: italic;
+  font-size: 14px;
+  color: #999;
+  line-height: 16px;
+  float: right;
+}
+
+#workExperience a,
+#projects a,
+#education a {
+  color: #1199c3;
+  text-decoration: none;
+  display: block;
+  font-size: 1.1em;
+}
+#education a {
+  /*overriding display block from above rule*/
+  display: inline;
 }
 
 #lets-connect {
   text-align: center;
 }
+.iconsLinks{
+  font-size: 12px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: #484848;
+}
+.iconsLinks a {
+  color: white;
+  text-decoration: none;
+}
 
+#map {
+  display: block;
+  height: 100%;
+  margin: 0 5%;
+}
+
+#mapDiv {
+  height: 400px;
+  width: 100%;
+  padding-bottom: 5%;
+}
 
 /* Media queries to handle various device widths */
 
 @media only screen and (max-width: 1024px) {
   #lets-connect {
-    margin-top: 5%;
+    margin-top: 3%;
   }
 }
 
@@ -223,20 +307,21 @@ span {
   }
 }
 
-#map {
-  display: block;
-  height: 100%;
-  margin: 0 5%;
-}
-
-#mapDiv {
-  height: 400px;
-  width: 100%;
-  padding-bottom: 5%;
+@media screen and (max-width: 530px) {
+  .flex-box {
+    display: block;
+  }
+  li.flex-item {
+    display: block;
+    margin: 0 auto;
+  }
 }
 
 @media only screen and (min-width: 750px) {
   #skills-h3, .biopic {
     display: block;
+  }
+  #name {
+    text-align: center;
   }
 }
