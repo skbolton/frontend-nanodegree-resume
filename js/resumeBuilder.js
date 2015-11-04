@@ -12,7 +12,7 @@ var bio = {
   "skills" : [
     "JavaScript", "HTML5", "CSS", "Design", "Teamwork"
   ],
-}
+};
 
 bio.displayBio = function() {
   // Use formatted string to complete template and add to DOM
@@ -65,8 +65,7 @@ bio.displayBio = function() {
 bio.displayBio();
 
 var education = {
-  "schools" : [
-    {
+  "schools" : [{
       "name" : "Alta High School",
       "location" : "Sandy, UT",
       "degree" : "General Education",
@@ -154,8 +153,7 @@ education.displayEducation();
 
 
 var work = {
-  "jobs" : [
-    {
+  "jobs" : [{
       "employer" : "Caffe Molise",
       "title" : "Assistant Manager",
       "location" : "Salt Lake City, UT",
@@ -177,7 +175,7 @@ var work = {
       "description" : "Provided a memorable and personalized guest experience. Red Rock brews their own award winning beer! A fun part of my job was not only picking the perfect beer for someone, but also educating them on different kinds of beer and brewing processes. I was a team lead server making me a first choice for larger parties or harder sections of the restaurant. I also managed the facebook page for the company. Using strategic posts I helped drive customer interest in new beers and food. This facilitated new customers and returning customers for Red Rock."
     }
   ]
-}
+};
 
 work.displayWork = function() {
   for(job in work.jobs) {
@@ -200,19 +198,18 @@ work.displayWork = function() {
 work.displayWork();
 
 var projects = {
-  "projects" : [
-    {
-      "title" : "The Thrilla in Manila",
+  "projects" : [{
+      "title" : "Your Project!",
       "dates" : "2015",
-      "description" : "This was a short project mostly because I am a badass and this was so beneath me. The only thing learned from this project is that I love bacon more than I thought. Crazy I know but I really really love bacon",
+      "description" : "Let me fill this space with your project!",
       "images" : [
         "images/Stephen.jpg"
       ] // end images property of project object
     },
     {
-      "title" : "The Thrilla in Manila",
+      "title" : "Your Project!",
       "dates" : "2015",
-      "description" : "This was a short project mostly because I am a badass and this was so beneath me. The only thing learned from this project is that I love bacon more than I thought. Crazy I know but I really really love bacon",
+      "description" : "Let me fill this space with your project!",
       "images" : [
         "images/Stephen.jpg",
         "images/Stephen.jpg"
