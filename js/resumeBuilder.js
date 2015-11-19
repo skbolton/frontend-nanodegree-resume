@@ -200,6 +200,7 @@ work.displayWork();
 var projects = {
   "projects" : [{
       "title" : "UpTopTents",
+      "url" : "http://skbolton.github.io/uptoptents",
       "dates" : "2015",
       "description" : "This was an awesome project for me that brought a lot of my skills together. This was the first time I had ever designed a website from the ground up. Picking out the colors and fonts was a lot of fun. I also used bootstrap functionality for the first time in a working project",
       "images" : [
@@ -229,6 +230,7 @@ projects.display = function() {
       // adding a new div to put info into
       $('#projects').append(HTMLprojectStart);
       formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[proj].title);
+      formattedProjectTitle = formattedProjectTitle.replace("%url%", projects.projects[proj].url);
       $('.project-entry:last').append(formattedProjectTitle);
 
 
