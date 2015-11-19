@@ -96,7 +96,7 @@ var education = {
       "url" : "http://www.udacity.com"
     }
   ]
-}
+};
 
 education.displayEducation = function() {
   if(education.schools.length > 0) {
@@ -199,20 +199,20 @@ work.displayWork();
 
 var projects = {
   "projects" : [{
-      "title" : "Your Project!",
+      "title" : "UpTopTents",
       "dates" : "2015",
-      "description" : "Let me fill this space with your project!",
+      "description" : "This was an awesome project for me that brought a lot of my skills together. This was the first time I had ever designed a website from the ground up. Picking out the colors and fonts was a lot of fun. I also used bootstrap functionality for the first time in a working project",
       "images" : [
-        "images/Stephen.jpg"
+        "images/uptop-home.png",
+        "images/uptop-about.png"
       ] // end images property of project object
     },
     {
-      "title" : "Your Project!",
+      "title" : "Your Next Project",
       "dates" : "2015",
-      "description" : "Let me fill this space with your project!",
+      "description" : "I would love to fill this space with your project. Lets get in touch and make your project a reality!",
       "images" : [
-        "images/Stephen.jpg",
-        "images/Stephen.jpg"
+
       ] // end images property of project object
     }
   ] // end projects array
@@ -242,6 +242,7 @@ projects.display = function() {
       // we need to loop through it.
       for(var i = 0; i < projects.projects[proj].images.length; i++){
         formattedProjectImage = HTMLprojectImage.replace("%data%", projects.projects[proj].images[i]);
+        formattedProjectImage = formattedProjectImage.replace('%url%', projects.projects[proj].images[i]);
         $('.project-entry:last').append(formattedProjectImage);
       }
 

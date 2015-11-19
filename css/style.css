@@ -62,7 +62,9 @@
 /*
 **** general styling
 */
-
+* {
+	box-sizing: border-box;
+}
 body, div, ul, li, p, h1, h2, h3, h4, h5, h6 {
   padding: 0;
   margin: 0;
@@ -250,6 +252,11 @@ span {
   display: block;
   font-size: 1.1em;
 }
+.proj-img {
+	width: 40%;
+	float: left;
+	padding: 0;
+}
 #education a {
   /*overriding display block from above rule*/
   display: inline;
@@ -280,6 +287,19 @@ span {
   width: 100%;
   padding-bottom: 5%;
 }
+
+/*
+clear-fix*/
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
 
 /* Media queries to handle various device widths */
 
